@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>衝刺口試題</title>
+<style>
+:root{--bg:#faf8f4;--fg:#26231f;--mut:#6f6a62;--card:#fff;--line:#e4dfd5;--ac:#2f6f6a;--hl:#fff1bf;--box:#eef6f4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1a18;--fg:#ece8e1;--mut:#a39d93;--card:#252320;--line:#3a3732;--ac:#7cc5bd;--hl:#4a4020;--box:#1f2e2c}}
+:root[data-theme="dark"]{--bg:#1b1a18;--fg:#ece8e1;--mut:#a39d93;--card:#252320;--line:#3a3732;--ac:#7cc5bd;--hl:#4a4020;--box:#1f2e2c}
+*{box-sizing:border-box}html{scroll-padding-top:60px}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.8 "Noto Sans TC","PingFang TC",system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:12px 16px 60px}
+h1{font-size:22px;margin:10px 0 2px}.sub{color:var(--mut);font-size:14px;margin:0 0 12px}
+nav{display:flex;gap:6px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;z-index:5}
+nav button{flex:1;padding:10px 4px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;font:inherit;font-size:14px;cursor:pointer}
+nav button.on{background:var(--ac);color:var(--bg);border-color:var(--ac);font-weight:600}
+.note{background:var(--box);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--mut);margin:8px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.tag{font-size:12px;color:var(--ac);font-weight:700}
+.en{font:17px/1.9 Georgia,"Times New Roman",serif;margin:4px 0 8px}
+u.w{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:var(--ac);cursor:pointer}
+u.w.sel{background:var(--hl)}
+.zh{display:none;border-top:1px dashed var(--line);padding-top:8px;color:var(--fg)}.zh.show{display:block}
+.btn{border:1px solid var(--ac);background:none;color:var(--ac);border-radius:8px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
+#wb{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom,0px));background:var(--box);border:1px solid var(--ac);border-radius:12px;padding:10px 14px;margin-top:10px;display:none}
+#wb b{font-size:19px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:0 14px}
+summary{padding:12px 0;font-weight:600;cursor:pointer}
+details[open] summary{border-bottom:1px dashed var(--line);margin-bottom:8px}
+.lb{font-size:12px;font-weight:700;color:var(--ac);margin-top:8px}.bd{margin:2px 0 8px}
+.tm{display:flex;align-items:center;gap:8px;margin:8px 0}.tm span{font-variant-numeric:tabular-nums;font-size:22px;font-weight:700;min-width:70px}
+.hide{display:none}
+</style></head><body><main>
+<h1>衝刺口試題</h1>
+<p class="sub">口試三關：① 英文文章　② 自傳 1.5 分鐘＋追問　③ 諮商實務演練 8 分鐘</p>
+<nav id="nav"></nav>
+<section id="p0"></section><section id="p1" class="hide"></section><section id="p2" class="hide"></section>
+<div id="wb"></div>
+</main>
+<script>
+var ART=[
+['① 摘要','Taiwan {enforced|ɪnˈfɔrst|實施} its anti-bullying regulations in 2012. This study found that a lack of teacher {training|ˈtrenɪŋ|訓練} and widespread {heterosexism|ˌhɛtəroˈsɛksɪzəm|異性戀中心主義} led schools to value test scores over the policy, while principals’ commitment was key.','台灣於 2012 年實施校園霸凌防制準則。本研究發現，教師缺乏訓練，加上普遍的異性戀中心主義，使學校重視成績勝過這項政策，而校長的投入是關鍵。'],
+['② 引言：霸凌的定義','Bullying means repeated, hurtful behavior in which there is an {imbalance|ɪmˈbæləns|失衡} of power. It can be verbal, physical, relational, sexual, or {cyber|ˈsaɪbɚ|網路的}.','霸凌是指重複發生、造成傷害，且雙方權力失衡的行為，形式可以是言語、肢體、關係、性或網路霸凌。'],
+['③ 引言：霸凌的後果','Victims may suffer {depression|dɪˈprɛʃən|憂鬱}, low self-esteem, and poorer grades. {Perpetrators|ˈpɝpəˌtretɚz|加害者} show other antisocial behavior, and bystanders may feel afraid or guilty.','受害者可能出現憂鬱、低自尊與成績下滑；加害者常有其他反社會行為；旁觀者則可能感到害怕或愧疚。'],
+['④ 引言：介入成效','A review found that anti-bullying programs had {mixed|mɪkst|好壞參半的} results. Scholars therefore argue that individual or family counseling works only when it comes with a school-wide, {systemic|sɪsˈtɛmɪk|系統性的} approach.','一項回顧發現反霸凌方案成效好壞參半。因此學者主張，個別或家庭諮商必須搭配全校性的系統取向才有效。'],
+['⑤ 引言：台灣研究現況','Taiwanese studies mostly focus on individuals and classrooms. Bullying becomes {exacerbated|ɪgˈzæsɚˌbetɪd|惡化} in junior high school, and the most {prevalent|ˈprɛvələnt|普遍的} form is physical, followed by verbal, relational, and cyber bullying.','台灣研究多聚焦在個人與班級層次。霸凌在國中階段加劇，最普遍的是肢體霸凌，其次是言語、關係與網路霸凌。'],
+['⑥ 政策背景','The 2012 regulations require schools to report incidents, offer {remedial|rɪˈmidiəl|補救的} education to offenders and victims, teach prevention to all students, and provide continuing education for staff.','2012 年的準則要求學校通報事件、對加害者與被害者提供補救教育、對全體學生實施預防教育，並為教職員提供在職進修。'],
+['⑦ 研究缺口','Principals understand the policy best, but teachers lack understanding and carry heavy {workloads|ˈwɝkˌlodz|工作量}. Guidance teachers face role conflict and deep-rooted gender {stereotypes|ˈstɛrioˌtaɪps|刻板印象}.','校長最了解政策，教師卻缺乏理解，還背負沉重工作量。輔導教師則面臨多重角色衝突與根深蒂固的性別刻板印象。'],
+['⑧ 研究問題','The study asked how school and social systems may support gender inequity and bullying, what staff understand about the policy, how far it is implemented, and how implementation affects behavior.','研究探問：學校與社會體系如何在無意間支持性別不平等與霸凌、教職員對政策的理解、政策落實到什麼程度，以及落實如何影響行為。'],
+['⑨ 理論架構','The researchers used the Integrated Social Justice Consultation Model. It holds that {inequities|ɪnˈɛkwətiz|不平等} come from unjust societies, that power can {marginalize|ˈmɑrdʒɪnəˌlaɪz|邊緣化} people, and that identities {intersect|ˌɪntɚˈsɛkt|交織}.','研究者採用整合性社會正義諮詢模式：不平等源自不公的社會、權力可能使人被邊緣化，且多重身分彼此交織。'],
+['⑩ 研究設計','A {triangulation|traɪˌæŋgjəˈleʃən|三角檢證} design paired an online survey with semi-structured interviews, so each method could {validate|ˈvælɪˌdet|驗證} the other. The interviews used interpretative {phenomenology|fɪˌnɑməˈnɑlədʒi|現象學}.','三角檢證設計結合線上問卷與半結構式訪談，讓兩種方法互相驗證；訪談採詮釋現象學。'],
+['⑪ 研究參與者','Survey participants were 59 teachers, 45 administrative staff, and seven guidance teachers, recruited by {purposive|ˈpɝpəsɪv|立意的} sampling. The 15 interviewees, aged 28 to 45, came from six cities.','問卷參與者有 59 位教師、45 位行政人員與 7 位輔導教師，以立意取樣招募。15 位受訪者年齡 28 至 45 歲，來自六個城市。'],
+['⑫ 資料蒐集與分析','Surveys were analyzed with descriptive statistics and chi-square tests. Open answers and {transcribed|trænˈskraɪbd|謄寫的} interviews were coded into {thematic|θɪˈmætɪk|主題的} categories. Rigor came from member checking, peer debriefing, and an audit trail.','問卷以描述統計與卡方檢定分析；開放題與謄寫的訪談逐字稿被編碼為主題類別。嚴謹性來自成員檢核、同儕討論與稽核軌跡。'],
+['⑬ 結果：觀察到的霸凌','Teachers observed bullying about 2.75 times a week, mostly verbal and in classrooms. Cyberbullying happens outside school, and victims tell only staff they trust. Staff can be bullied too, by students and parents.','教師平均每週觀察到約 2.75 次霸凌，多為言語霸凌且發生在教室。網路霸凌發生在校外，受害者只向信任的教職員求助。教職員也可能被學生與家長霸凌。'],
+['⑭ 結果：態度與成效','Eighty-nine percent believed the policy improves school climate, yet only 63 percent found it {effective|ɪˈfɛktɪv|有效的}. Female, junior, and teaching staff were more likely to call it ineffective.','89% 認為政策能改善校園氛圍，但只有 63% 認為有效。女性、資淺及教學人員更常認為它無效。'],
+['⑮ 結果：政策落實','Only 58 percent said the policy was fully implemented. Reported cases were often {dismissed|dɪsˈmɪst|不予理會}, because schools feared {probation|proˈbeʃən|觀察期} and losing face. Prevention education was {superficial|ˌsupɚˈfɪʃəl|流於表面的}.','只有 58% 表示政策被完全落實。通報的案件常被擱置，因為學校怕被列入觀察期、丟臉。預防教育流於表面。'],
+['⑯ 結果：個人的作為','Responses varied: some teachers intervened seriously, while others said “kids will be kids.” Forty-eight percent thought their own efforts worked and 48 percent did not, and most doubted a bullying-free campus was possible.','反應不一：有些教師認真介入，有些則說「小孩子就是這樣」。48% 認為自己的努力有效，48% 認為無效，多數人懷疑校園能完全無霸凌。'],
+['⑰ 結果：輔導教師','Guidance teachers reached out to students, built course materials, and taught empathy. But low reporting meant few cases reached them, and they lacked time, resources, and support from leaders.','輔導教師主動接觸學生、編寫教材並教導同理心。但通報率低使他們接到的案件很少，加上缺乏時間、資源與領導者的支持。'],
+['⑱ 結果：校園氛圍','Four features emerged: reputation over incidents, {discrimination|dɪˌskrɪməˈneʃən|歧視} against diversity (such as low-income families, gay students, and feminine boys), {normalizing|ˈnɔrməˌlaɪzɪŋ|正常化} bullying, and blaming the victim.','出現四個面向：名聲重於事件、歧視多元（如低收入家庭、同志學生與陰柔男孩）、將霸凌正常化，以及責怪受害者。'],
+['⑲ 結果：系統障礙','About 61 percent wanted more training on implementation. Teachers struggled to name verbal and relational bullying, workshops felt {impractical|ɪmˈpræktɪkəl|不實用的}, and some parents used their influence to pressure teachers to drop cases.','約 61% 希望有更多執行面的訓練。教師難以辨識言語與關係霸凌，研習顯得不實用，有些家長還利用影響力施壓教師撤案。'],
+['⑳ 討論：社會與學校層級','Gender inequality in society, rooted in the Confucian idea of “men outside, women inside,” is reflected in schools. Principals control resources, and leaders who prize academic {reputation|ˌrɛpjəˈteʃən|名聲} tend to dismiss cases.','社會中的性別不平等，源自儒家「男主外、女主內」的觀念，也反映在學校。校長掌控資源，重視升學名聲的領導者傾向忽視案件。'],
+['㉑ 討論：教師與輔導教師','Teachers often blamed victims and chose individual {interventions|ˌɪntɚˈvɛnʃənz|介入}. Female junior teachers felt powerless to ask for support. Guidance teachers were {crucial|ˈkruʃəl|關鍵的} yet excluded from timely intervention.','教師常責怪受害者，且選擇個別層次的介入。資淺女性教師覺得無力爭取支持。輔導教師雖然關鍵，卻被排除在即時介入之外。'],
+['㉒ 結論、建議與限制','The policy is seen as necessary but {inconsistently|ˌɪnkənˈsɪstəntli|不一致地} implemented. The authors recommend social justice training and more resources. {Limitations|ˌlɪməˈteʃənz|限制} include a small sample and no student or parent voices.','政策被視為必要但執行不一致。作者建議社會正義相關訓練並增加資源。限制包括樣本小，且缺少學生與家長的聲音。']
+];
+var BIO=[
+['自傳 1.5 分鐘（骨架，請換成你自己的稿）','<div class="lb">四個接力棒</div><div class="bd">學校的 26 年 → 退休的轉換 → 未來的論文 → 對高師大的期待</div><div class="lb">口述草稿</div><div class="bd">教授好。我在國中任教二十六年，當過導師、行政，也擔任認輔老師。這些年我發現，學生課業卡住只是表面，底下常是沒被接住的安全感、價值感和自主權。今年我從學校退休，沒有選擇安穩的日子，而是來學諮商。存在主義說，放下過去的標籤，勇敢做出選擇、創造新意義，這就是我現在做的事。我也正經歷中年轉換與退休適應，我想把它帶進畢業研究，用行動研究，從潛意識意識化出發，陪自己，也陪同樣在轉換期的人。我希望在高師大學會用諮商師的方式陪伴青少年。謝謝教授。</div>'],
+['追問 1｜自傳說學生課業背後有更深的心理需求，你觀察到哪些？','<div class="lb">口訣</div><div class="bd">安全感、價值感、自主權</div><div class="lb">口述</div><div class="bd">課業只是表象，往下挖我最常看到三個需求。<br>第一，<b>安全感</b>：孩子太怕失敗，因為成績常被綁在「有沒有被愛」上，所以乾脆放棄；他們渴望不論分數都被接納。<br>第二，<b>價值感</b>：課業得不到成就感，需求就轉向網路或同儕團體，其實是想被看見、被認同。<br>第三，<b>自主權</b>：生活被大人高度控制，放棄課業或拒學，就成了奪回掌控權的手段。<br>所以我會先修補安全感，在課業以外幫他找回價值感，並和家長合作把自主權適度還給孩子。</div>'],
+['追問 2｜你正在經歷中年轉換與退休適應，會帶進畢業研究嗎？（潛意識意識化）','<div class="lb">研究方法</div><div class="bd">行動研究：把自己的轉換歷程當成實踐與覺察的場域。</div><div class="lb">兩個支柱</div><div class="bd"><b>佛洛伊德</b>：潛意識裡有被壓抑的恐懼與防衛。我要看清，自己是否用填滿行程來逃避退休後的無價值感、失去「老師」身分的失落，把它拉到意識層面。<br><b>榮格</b>：潛意識也是智慧與創造力的寶庫，中年是轉向內心、統整被忽略的自己的時刻。退休的焦慮意識化後，看見的是走向「自性化」、成為完整的契機。</div><div class="lb">結語</div><div class="bd">佛洛伊德處理過去的壓抑，榮格開啟後半生的潛能；這份歷程會成為我未來接住同樣在生命轉換期的個案的底氣。</div>'],
+['追問 3｜什麼是行動研究？','<div class="bd">核心精神是「在行動中反思與修正」：研究者本人進入現場，為了解決切身問題而研究。流程是循環的四步：<b>計畫 → 行動 → 觀察 → 反思</b>。我既是行動的人，也是被研究的人；我會透過諮商與反思記錄，誠實記錄並滾動式修正自己如何走出退休焦慮，讓實務與理論對話。</div>'],
+['追問 4｜為什麼放棄穩定的退休生活，這個年紀還來讀諮商所？（存在主義）','<div class="lb">核心一句</div><div class="bd">存在主義的核心是「放下過去的標籤，勇敢做出選擇、創造新意義」。</div><div class="lb">口述</div><div class="bd">生命的價值不是被給予的，而是透過選擇與承擔創造出來的。只過安穩的退休，對我是重複過去的慣性；我選擇放下二十六年的頭銜來讀諮商所，雖然面對未知有些焦慮，但這是我為後半輩子創造新的意義。我也希望未來能用這份勇氣，陪迷茫的個案做出屬於自己的選擇並負起責任。</div>'],
+['追問 5｜從老師轉換成諮商師，最大的挑戰是什麼？','<div class="bd">最大的挑戰是轉化二十六年習慣的「指導與糾正」。當老師時我習慣給標準答案、給指令；當諮商師必須倒空自己，克制想教導的衝動，退到陪伴者的位置，用無條件接納陪個案長出為自己做決定的力量。<br><b>畫面：台上的指導者 → 台下的陪伴者。</b></div>'],
+['追問 6｜你當諮商師的優勢與劣勢？（合併版）','<div class="bd">優勢是二十六年當導師、行政和認輔累積的校園經驗，接觸過很多狀況的學生和家長，比較能用平常心看待，不輕易批判或貼標籤。劣勢是當老師太久，一看到學生遇到困難，就反射性想給建議、想幫他想辦法，這是我最需要調整的舊習慣。我正學習放慢說話速度，克制指導的衝動，多留空間傾聽，把做決定的責任留給個案。</div>'],
+['追問 7｜（衍生）你要為自己創造的新意義是什麼？','<div class="bd">從「體制的防護者」轉變成「生命的陪伴者」。過去二十六年，我在體制內保護、規範學生；後半輩子，我想放下這些要求和框架，純粹以諮商師的身分，陪伴受挫的生命，把教育的養分轉化成溫暖的助人能量。</div>'],
+['追問 8｜（衍生）拒學、成癮的孩子也是「選擇」留在房間，你怎麼用存在主義看？','<div class="bd">那是他為了對抗無法承受的痛苦，做的「消極自我保護」。他有選擇的自由，也正承擔孤獨與代價。我不強迫他立刻改變，而是先同理他在房間裡的無力感，陪他看見自己「隨時擁有重新選擇的自由」；等他在現實中長出力量，自然會做出更有建設性的選擇。</div>']
+];
+var PRA=[
+['情境 1｜拒學、成癮、複合問題（MI＋CBT＋家族）','國二阿豪在學校被排擠，不去上學，整天在房間打網遊、滑短影音，還跟校外朋友抽菸（可延伸到吸毒）。','「在網路上，或跟那些朋友在一起時，讓你最放鬆、最被理解的感覺是什麼？」','開場：這些行為是現實受挫後的「止痛藥」與「避難所」。<br>① <b>穩住危機</b>：連線輔導團隊與校安，評估吸毒程度與共病（ADHD、憂鬱、焦慮），必要時轉介兒童青少年精神科。<br>② <b>先拉人（MI）</b>：不說教，反映感受，引導他看見沉迷與真正想要的生活之間的矛盾。<br>③ <b>再改版（CBT）</b>：找出觸發點（被已讀不回、看到考卷想「我好爛」→逃進網路），挑戰「只有網路上有價值」，補上人際與情緒調節，用打球、跳舞等替代。<br>④ <b>全家動（家族治療）</b>：父母從「警察抓小偷」變成「隊友」，溫和但有界線。<br>結語：醫療、學校、家庭三管齊下，牽著孩子回到現實。'],
+['情境 2｜家庭衝突：全聯買袋子（薩提爾）','爸爸帶孩子結帳，店員問要不要袋子，爸爸回「不然要用嘴巴提嗎？」轉身就走，孩子留下一直說對不起。回家孩子說「你這樣很丟臉」，爸爸回「輪到你教訓我了嗎？」','（對爸爸）「剛剛被當面指出來，一定很尷尬、很沒面子吧？」（對孩子）「你留下來道歉，一定很委屈。」','<b>四姿態</b>：爸爸對店員＝指責（掩飾急躁）；孩子對店員＝討好（委屈自己維持和平）；孩子對爸爸＝超理智（講規範、逃避情緒）；爸爸回擊＝再指責（尊嚴受挫）；本案沒有「打岔」。<br><b>冰山底層</b>：行為 → 應對 → 感受 → 觀點 → 期待 → 渴望 → 自我。爸爸的觀點是「被問是找麻煩」，期待「被尊重」，渴望「被接納、肯定」。<br><b>目標</b>：一致性溝通，兼顧自我、他人、情境。例：「剛剛我急了，口氣太衝；被你指出來有點尷尬，但謝謝你提醒我。」'],
+['情境 3｜生涯抉擇（CARES）','國三阿明成績好、想念普通高中，爸爸要他念高職夜校回家幫忙，他焦慮到睡不著。（也可換成：先就業還是讀研究所。）','「我們今天不急著選答案。這兩個選擇，各讓你有什麼期待？又有什麼擔心？」','<b>C</b> Clarify the dilemma 釐清困境（熱情還是逃避？）<br><b>A</b> Assess options 評估選項（建教合作、先工作再進修）<br><b>R</b> Review consequences 檢視後果與代價<br><b>E</b> Effect an action 執行行動（下週找時間跟爸爸談）<br><b>S</b> Stay with the decision and review 維持決定、定期檢視（半年後回頭看）'],
+['情境 4｜危機通報（自傷、自殺意念）','小美在諮商室痛哭，拉開袖子露出割傷，說今晚回家想從頂樓跳下去。','「因為我非常在乎你的安全，我沒辦法幫你隱瞞。我必須找學校團隊一起進來，把保護你的網子織得更大。」','<b>生命與法律優先</b>，啟動保密例外，通報是保護不是背叛。立即通知輔導主任與校安，依法定時限通報校安與社政（稿中說法為 24 小時內）；不讓學生獨處，聯絡家長，安排精神科評估；事後持續關懷與追蹤。'],
+['情境 5｜非自願個案','小強因廁所抽菸被記過，強制轉介諮商，進來雙手抱胸、一句話都不說。','「我知道你是被逼著坐在這裡的，一定覺得超不爽。今天不聊學校要你改的事，聊聊你坐在這裡有多無聊。」','<b>去標籤、不說教、談他的不爽</b>。順著抗拒走，讓他發現我不是學校派來的警察；關係建立後，再用 MI 談抽菸背後的需要。'],
+['情境 6｜系統衝突（導師、家長）','導師氣沖沖地說：「這學生沒救了，你趕快把他治好，不然別讓他回班上！」','「老師你真的辛苦了，要管全班又要盯他。他在諮商室其實有說很抱歉，我們一起想想怎麼在班上給他一點小舞台？」','<b>不選邊，當橋樑</b>。導師的憤怒背後是無力感；先肯定辛勞、聽懂焦慮，再分享學生的微小改變，邀請導師成為「神隊友」，把焦點從處罰轉到一起拉他一把。'],
+['情境 7｜倫理與界線','諮商一學期的小明，最後一次晤談送你兩千元的耳機，一直要你的私人 Line 和 Threads。','「謝謝你願意分享，這代表你信任我。但因為我是你的心理師，為了保護諮商空間，我不能收禮物，也不加私人社群。你想聊的事，都可以帶進諮商室，我會全力聽你說。」','溫和而堅定地拒絕雙重關係。<b>界線不是拒絕，是保護。</b>拿捏不定時，尋求同儕督導。'],
+['萬用救急｜想不出學派時','','','<b>挖</b>：「孩子的大問題常只是冰山表面，往下挖是沒被接住的需求，我不急著要他改行為，會先穩住危機，再找出他卡在哪。」<br><b>幫</b>：「心理師不孤軍奮戰，先評估安全，連結輔導團隊、校安、必要時精神科。」<br><b>橋</b>：「我不分對錯、不選邊，當橋樑；大家出發點都是為孩子好，只是各自焦慮。」<br><b>結尾公式</b>：「行為是冰山一角，背後是安全感、價值感、自主權。我不拿走他的避難所，而是在現實中陪他站穩。」'],
+['觀點題｜黃仁勳：「被亞洲父母養大的孩子都要看心理醫生」','','','<b>阿德勒</b>：被挑剔、比較養出補不滿的自卑感 → 為別人認同而「追求錯誤的卓越」 → 用課題分離與重新鼓勵，找回為自己而活的勇氣。<br><b>克萊因／溫尼考特</b>：不斷挑剔被內化成「永遠在評分」的內在壞客體；為了順從而壓抑真實感受，發展出迎合期待的「假我」。<br><b>完形</b>：父母的高標準被吞下去成為「內攝」（內心的勝任者天天鞭策自己）；渴望無條件接納成了「未竟事宜」。<br>（稿中：阿德勒、完形為完整版，克萊因／溫尼考特為摘要。）']
+];
+function esc(s){return s}
+var cur=0,W=document.getElementById('wb'),sp=null;
+function tm(sec){return '<div class="tm"><button class="btn" onclick="tgl(this,'+sec+')">開始計時</button><span>'+f(sec)+'</span></div>'}
+function f(s){return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+function tgl(b,sec){var sp2=b.nextSibling;if(b._t){clearInterval(b._t);b._t=0;b.textContent='開始計時';sp2.textContent=f(sec);return}var n=sec;b.textContent='重設';b._t=setInterval(function(){n--;sp2.textContent=f(Math.max(n,0));if(n<=0){clearInterval(b._t);b._t=0;b.textContent='開始計時'}},1000)}
+function art(){var h='<div class="note">此頁依原文各節逐段改寫、涵蓋全文（共 22 段），非逐字轉載。點底線單字看中文與發音（會朗讀），按「顯示翻譯」看整段中文。</div><button class="btn" onclick="allz(this)">全部顯示翻譯</button>';
+ART.forEach(function(a,i){var t=a[1].replace(/\{([^|]+)\|([^|]+)\|([^}]+)\}/g,function(m,w,p,z){return '<u class="w" data-p="'+p+'" data-z="'+z+'" data-w="'+w.replace(/-/g,' ')+'">'+w+'</u>'});
+h+='<div class="card"><div class="tag">'+a[0]+'</div><p class="en">'+t+'</p><button class="btn" onclick="this.nextElementSibling.classList.toggle(\'show\')">顯示翻譯</button><p class="zh">'+a[2]+'</p></div>'});return h}
+function allz(b){var on=b.dataset.on!=='1';b.dataset.on=on?'1':'0';b.textContent=on?'全部隱藏翻譯':'全部顯示翻譯';document.querySelectorAll('#p0 .zh').forEach(function(z){z.classList.toggle('show',on)})}
+function det(arr,mode){return arr.map(function(a,i){var b=mode==='bio'?a[1]:(a[1]?'<div class="lb">情境</div><div class="bd">'+a[1]+'</div>':'')+(a[2]?'<div class="lb">同理心對話</div><div class="bd">'+a[2]+'</div>':'')+'<div class="lb">處置（直接口述）</div><div class="bd">'+a[3]+'</div>';return '<details'+(i===0&&mode==='bio'?' open':'')+'><summary>'+a[0]+'</summary>'+b+'</details>'}).join('')}
+document.getElementById('p0').innerHTML=art();
+document.getElementById('p1').innerHTML='<div class="note">自傳 1.5 分鐘後，教授會針對自傳提問。下方依你整理的 Q&amp;A 分類。</div>'+tm(90)+det(BIO,'bio');
+document.getElementById('p2').innerHTML='<div class="note">8 分鐘：聽完情境後，先一句同理心，再直接呈現處置。每題都附情境、同理心對話、口述處置。</div>'+tm(480)+det(PRA,'pra');
+var nav=document.getElementById('nav');['① 英文文章','② 自傳＋追問','③ 實務演練'].forEach(function(n,i){var b=document.createElement('button');b.textContent=n;b.onclick=function(){go(i)};nav.appendChild(b)});
+function go(i){cur=i;for(var k=0;k<3;k++){document.getElementById('p'+k).classList.toggle('hide',k!==i);nav.children[k].classList.toggle('on',k===i)}W.style.display='none';window.scrollTo(0,0)}
+go(0);
+document.addEventListener('click',function(e){var u=e.target.closest&&e.target.closest('u.w');if(!u)return;document.querySelectorAll('u.sel').forEach(function(x){x.classList.remove('sel')});u.classList.add('sel');W.style.display='block';W.innerHTML='<b>'+u.textContent+'</b> <span style="color:var(--mut)">/'+u.dataset.p+'/</span><br>'+u.dataset.z+' <button class="btn" id="spk">🔊 發音</button>';document.getElementById('spk').onclick=function(){try{var s=new SpeechSynthesisUtterance(u.dataset.w);s.lang='en-US';speechSynthesis.cancel();speechSynthesis.speak(s)}catch(x){}};try{var s=new SpeechSynthesisUtterance(u.dataset.w);s.lang='en-US';speechSynthesis.cancel();speechSynthesis.speak(s)}catch(x){}});
+</script></body></html>
